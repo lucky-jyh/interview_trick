@@ -5,7 +5,7 @@ void heap_sort(T* a, int size)
 {
 	//构建初始堆（其实也是堆调整的过程，只不过只需要调整非叶子结点即可）
 	for(int i = size/2 - 1; i >= 0; i--)
-		heap_adjust(a, size-i, i);
+		heap_adjust(a, size, i);
 
 	while(size > 0)
 	{
@@ -24,7 +24,7 @@ void heap_sort(T* a, int size)
 template <typename T>
 void heap_adjust(T*a, int size, int e)
 {
-	int l_ch = 2*e, r_ch = 2*e + 1;
+	int l_ch = 2*e + 1, r_ch = 2*e + 2;
 	while(r_ch < size) //左右子结点都存在
 	{
 		if(a[e] <= a[l_ch] && a[e] <= a[r_ch]) return;
@@ -36,8 +36,8 @@ void heap_adjust(T*a, int size, int e)
 			a[e] <-> a[r_ch];
 			e = r_ch;
 		}
-		l_ch = 2*e;
-		r_ch = 2*e + 1;
+		l_ch = 2*e + 1;
+		r_ch = 2*e + 2;
 	}
 
 	if(l_ch < size && a[l_ch] < a[e]) //待调整结点只有左子结点，并且比该结点小；
