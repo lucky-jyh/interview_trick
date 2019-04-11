@@ -10,7 +10,7 @@ int InOrderTraverse(BiTree T) {
 		}
 		while(!s.empty()) {
 			p = s.top();
-			visit();
+			visit(p);
 			s.pop();
 			p = p->rchild;
 		}
