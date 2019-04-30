@@ -1,0 +1,26 @@
+
+func main() {
+	chan1 := make(chan bool)
+	chan2 := make(chan bool)
+	chanM := make(chan bool)
+
+	num := 0
+	chan1 <- true
+	go gr(chan1, chan2, chanM)
+	go gr(chan2, chan1, chanM)
+
+	<-chanM
+}
+
+func gr(chan1, chan2, chanM bool) {
+	for {
+		if <-chan1 {
+			fmt.Println(++num)
+			if num >= 100 {
+				chanM <- true
+				return
+			}
+			chan2 <- true
+		}
+	}
+}
