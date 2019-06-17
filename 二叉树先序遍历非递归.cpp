@@ -4,13 +4,13 @@ void PreOrder(BiTree T) {
 	Node*p = T;
 
 	while(p || !s.empty()) {
-		while(p) {
+		if (p) {
 			visit(p);
 			s.push(p);
 			p = p->lchild;
-		}
-		if(!s.empty()) {
-			p = s.pop();
+		} else {
+			p = s.top();
+			s.pop();
 			p = p->rchild;
 		}
 	}
