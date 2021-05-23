@@ -6,7 +6,7 @@ void ReverseList(NodeList &L) {
 		return;
 	}
 	
-	Node* p = L->next; //带头结点的情况，L即是头结点，不带头结点的情况下，是p=L；下面关键的两步的第一步也是p->next = L->next; L->next = p;
+	Node* p = L->next; //带头结点的情况，L即是头结点，不带头结点的情况下，是p=L；下面关键的两步的第一步是p->next = L; L = p;
 	L->next = nullptr;
 	Node* q;
 	
